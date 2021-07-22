@@ -1,8 +1,53 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model TestRegex.Models.TestViewModel
+    @{
+        ViewData["Title"] = "Home Page";
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+
+
+
+    <form asp-action="Index" method="post" enctype="multipart/form-data">
+        <div class="row" style="margin-top:150px;">
+            <div class="col-6">
+                <input asp-for="@Model.Text" class="w-100 form-control" name="text" placeholder="Escribe algo...">
+                <span asp-validation-for="@Model.Text" class="text-danger"></span>
+                <br />
+                <label for="list">Elige una opción:</label>
+                <select class="form-select form-select-lg" asp-for="@Model.Option" name="option">
+                    <option value="0">...</option>
+                    <option value="1">IsContainsText</option>
+                    <option value="2">IsContainsNumber</option>
+                    <option value="3">IsContainsAlphaNumeric</option>
+                    <option value="4">IsValidUserNameId</option>
+                    <option value="5">IsValidUserNameIdBox</option>
+                    <option value="6">IsCoordinatesTxt</option>
+                    <option value="7">IsDuplicateWords</option>
+                    <option value="8">Is_A_URLTxt</option>
+                    <option value="9">Is_Facebook_bool</option>
+                    <option value="10">IsValidEmail</option>
+                    <option value="11">IsValidPhone</option>
+                </select>
+
+                <button type="submit" class="btn btn-success">Ejecutar</button>
+
+            </div>
+            <div class="col-6">
+                @if (Model!= null && Model.Option > 0) {
+                <label>Resultado:</label>
+
+                    @if (Model.Result) 
+                    {
+                        <h4 class="display-6 text-success">Correcto</h4> 
+                    } 
+                    else 
+                    { 
+                        <h4 class="display-6 text-danger">Incorrecto</h4>
+                     }
+                }
+            </div>
+        </div>
+    </form>
