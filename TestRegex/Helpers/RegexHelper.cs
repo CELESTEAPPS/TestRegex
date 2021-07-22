@@ -59,8 +59,6 @@ namespace TestRegex.Helpers
             }
             return false;
         }
-
-
         public static bool IsCoordinatesTxt(string txt)
         {
             string pattern = @"[^a-zA-Z]([-]?([0-9]{0,2}\.[0-9]{6})1*)";
@@ -130,18 +128,15 @@ namespace TestRegex.Helpers
 
             return false;
         }
-
         public static bool IsValidEmail(string txt)
         {
             //https://stackoverflow.com/questions/5342375/regex-email-validation
             return Regex.IsMatch(txt, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-
-
         public static bool IsValidPhone(string txt)
         {
             //https://stackoverflow.com/questions/18584492/regular-expression-for-asp-net-for-international-local-phone-numbers
-            return Regex.IsMatch(txt, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            return Regex.IsMatch(txt, @"^([\+]?[0-9]{1,3}[\s.-][0-9]{1,12})([\s.-]?[0-9]{1,4}?)$");
         }
 
     }
